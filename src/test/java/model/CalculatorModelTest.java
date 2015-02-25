@@ -12,6 +12,7 @@ import org.junit.Test;
 public class CalculatorModelTest {
     I_CalculatorModel myCalc;
 
+     //Comentario en el setUp
     @Before
     public void setUp() throws Exception {
         myCalc = new CalculatorModel();
