@@ -8,17 +8,17 @@ import model.DivideByZero;
 
 import org.junit.Before;
 import org.junit.Test;
-// Test del modelo de mi calculadora
+// Comentario en cabecera
 public class CalculatorModelTest {
     I_CalculatorModel myCalc;
 
-     //Comentario en el setUp
+    //Comentario en setUp
     @Before
     public void setUp() throws Exception {
         myCalc = new CalculatorModel();
     }
 
-    // --------------------------------------------------------	
+    // --------------------------------------------------------
     @Test
     public void t00initVal() {
         assertTrue (myCalc.getResult() == 0);
