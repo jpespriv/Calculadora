@@ -23,6 +23,7 @@ public class CalculatorModelTest {
         assertTrue (myCalc.getResult() == 0);
     }
 
+    //Comentario en t00
     @Test
     public void t00setGet() {
         myCalc.setResult(12);
