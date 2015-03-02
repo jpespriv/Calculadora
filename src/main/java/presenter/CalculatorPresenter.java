@@ -123,6 +123,7 @@ public class CalculatorPresenter implements I_CalculatorPresenter {
         }else{
             _number = _number + ".";
         }
+        get_model().reset();
         displayNumber();
 	}
 
