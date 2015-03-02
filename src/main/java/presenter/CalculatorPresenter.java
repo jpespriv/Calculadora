@@ -107,13 +107,8 @@ public class CalculatorPresenter implements I_CalculatorPresenter {
 		}
 
 		Integer current_value = get_model().getResult();
-
-        if(current_value < -500 || current_value > 500){
-            current_value = 0;
-            get_view().displayWarning("El resultado se sale de los limites (-500 a 500)");
-        }
-
 		_number = current_value.toString();
+
         displayNumber();
 		_number = "0";
 		_savedOperand = c;
