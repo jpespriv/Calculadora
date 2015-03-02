@@ -12,7 +12,7 @@ public class CalculatorModel implements I_CalculatorModel {
         _max = Integer.MAX_VALUE;
 		_result = 0;
 	}
-
+//
     public CalculatorModel(int min, int max){
         _min = min;
         _max = max;
