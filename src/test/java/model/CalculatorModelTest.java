@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import model.CalculatorModel;
 import model.I_CalculatorModel;
 import model.DivideByZero;
-import validador.Validador;
+import validador1.Validador;
 
 import org.junit.Before;
 import org.junit.Test;

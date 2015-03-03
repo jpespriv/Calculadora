@@ -1,5 +1,5 @@
 package model;
-import validador.Validador;
+import validador1.Validador;
 
 public class CalculatorModel implements I_CalculatorModel {
 	private int _result;
