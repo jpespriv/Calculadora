@@ -5,16 +5,24 @@ import static org.junit.Assert.*;
 import model.CalculatorModel;
 import model.I_CalculatorModel;
 import model.DivideByZero;
+import validador.Validador;
 
 import org.junit.Before;
 import org.junit.Test;
+
 // Test del modelo de mi calculadora
 public class CalculatorModelTest {
     I_CalculatorModel myCalc;
+    I_CalculatorModel myCalc1;
+    int min = -10;
+    int max = 20;
+    Validador myVal;
 
     @Before
     public void setUp() throws Exception {
         myCalc = new CalculatorModel();
+        myCalc1 = new CalculatorModel(min, max);
+        myVal = new Validador(min, max);
     }
 
     // --------------------------------------------------------	
@@ -158,6 +166,120 @@ public class CalculatorModelTest {
             fail("unknown exception");
         }
 
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    //Tests del validador
+
+    @Test
+    public void TestResultadoPorDebajoDelLimiteResta() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.subtract(20);
+        }catch(Validador.Overflow e){
+            assertTrue(true);;
+        }
+    }
+
+    @Test
+    public void TestResultadoPorDebajoDelLimiteSuma() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.add(-20);
+            fail("Overflow not raised");
+        }catch(Validador.Overflow e){
+            assertTrue(true);;
+        }
+    }
+
+    @Test
+    public void TestResultadoPorDebajoDelLimiteMultiplicacion() throws Exception{
+        myCalc1.setResult(15);
+        try{
+            myCalc1.multiply(-1);
+            fail("Overflow not raised");
+        }catch(Validador.Overflow e){
+            assertTrue(true);;
+        }
+    }
+
+    @Test
+    public void TestResultadoPorDebajoDelLimiteDivision() throws Exception{
+        myCalc1.setResult(60);
+        try{
+            myCalc1.divide(-4);
+            fail("Overflow not raised");
+        }catch(Validador.Overflow e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void TestResultadoPorEncimaDelLimiteSuma() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.add(20);
+            fail("Underflow not raised");
+        }catch(Validador.Underflow e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void TestResultadoPorEncimaDelLimiteResta() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.subtract(-20);
+            fail("Underflow not raised");
+        }catch(Validador.Underflow e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void TestResultadoPorEncimaDelLimiteMultiplicacion() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.multiply(5);
+            fail("Underflow not raised");
+        }catch(Validador.Underflow e){
+            assertTrue(true);
+        }
+    }
+/* Este test no se puede hacer dado que, trabajando con enteros, es imposible que divida un número por otro y que el
+            resultado de esta división sea superior al límite.
+    @Test
+    public void TestResultadoPorEncimaDelLimiteDivision() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.divide(1);
+            fail("Underflow not raised");
+        }catch(Validador.Underflow e){
+            assertTrue(true);
+        }
+    }
+    */
+
+    @Test
+    public void TestResultadoEnElLimiteSuperior() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.multiply(4);
+            fail("Underflow not raised");
+        }catch(Validador.Underflow e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void TestResultadoEnElLimiteInferior() throws Exception{
+        myCalc1.setResult(5);
+        try{
+            myCalc1.add(-15);
+            fail("Overflow not raised");
+        }catch(Validador.Overflow e){
+            assertTrue(true);
+        }
     }
 
 
