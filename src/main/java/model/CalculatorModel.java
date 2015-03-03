@@ -1,20 +1,23 @@
 package model;
-
+import validador.Validador;
 
 public class CalculatorModel implements I_CalculatorModel {
 	private int _result;
     private int _min;
     private int _max;
+    private Validador _validador;
 			
 	public CalculatorModel() {
-        _min = Integer.MIN_VALUE;
-        _max = Integer.MAX_VALUE;
+        this._min = Integer.MIN_VALUE;
+        this._max = Integer.MAX_VALUE;
+        _validador = new Validador(_min, _max);
 		_result = 0;
 	}
 //
     public CalculatorModel(int min, int max){
-        _min = min;
-        _max = max;
+        this._min = min;
+        this._max = max;
+        _validador = new Validador(_min, _max);
         _result = 0;
     }
 
@@ -22,21 +25,21 @@ public class CalculatorModel implements I_CalculatorModel {
 	@Override
 	public void add(int operand) throws Exception {
         long resultado = getResult() + operand;
-        Validator.checkBounds(resultado);
+        _validador.checkBounds(resultado);
 	    setResult ((int) resultado);
 	}
 
 	@Override
 	public void subtract(int operand) throws Exception {
         long resultado = getResult() - operand;
-        Validator.checkBounds(resultado);
+        _validador.checkBounds(resultado);
         setResult ((int) resultado);
 	}
 
 	@Override
 	public void multiply(int operand) throws Exception {
         long resultado = getResult() * operand;
-        Validator.checkBounds(resultado);
+        _validador.checkBounds(resultado);
         setResult ((int) resultado);
 	}
 
@@ -46,7 +49,7 @@ public class CalculatorModel implements I_CalculatorModel {
 	         throw new DivideByZero();
 		}else{
             long resultado = getResult() / operand;
-            Validator.checkBounds(resultado);
+            _validador.checkBounds(resultado);
             setResult ((int) resultado);
         }
 	}
