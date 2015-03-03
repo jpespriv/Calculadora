@@ -78,7 +78,7 @@ public class MyStepdefs {
     }
 
     @Then("^la calculadora nos muestra un error$")
-    public void la_calculadora_nos_muestra_un_error() throws Throwable {
+    public void la_calculadora_nos_muestra_un_error() throws Exception {
         assertTrue(_error != null);
     }
 }
