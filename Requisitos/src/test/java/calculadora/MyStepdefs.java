@@ -66,15 +66,23 @@ public class MyStepdefs {
     }
 
     @When("^hacemos una operacion que supera el limite inferior$")
-    public void hacemos_una_operacion_que_supera_el_limite_inferior() throws Throwable {
-        _model.setResult(-10);
-        _model.subtract(1);
+    public void hacemos_una_operacion_que_supera_el_limite_inferior() throws Exception {
+        _model.setResult(5);
+        try{
+            _model.subtract(30);
+        }catch(Exception e){
+            _error = e;
+        }
     }
 
     @When("^hacemos una operacion que supera el limite superior$")
-    public void hacemos_una_operacion_que_supera_el_limite_superior() throws Throwable {
-       _model.setResult(20);
-        _model.add(1);
+    public void hacemos_una_operacion_que_supera_el_limite_superior() throws Exception {
+       _model.setResult(15);
+        try{
+            _model.add(10);
+        }catch(Exception e){
+            _error = e;
+        }
     }
 
     @Then("^la calculadora nos muestra un error$")
