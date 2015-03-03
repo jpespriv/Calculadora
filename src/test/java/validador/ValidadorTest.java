@@ -22,8 +22,9 @@ public class ValidadorTest {
     public void TestOverFlowDebajoDelLimite() throws Validador.Underflow, Validador.Overflow {
         try{
             myVal.checkBounds(-15);
+            fail("Overflow not raised");
         }catch(Validador.Overflow e){
-            e.printStackTrace();
+           assertTrue(true);
         }
     }
 
@@ -31,8 +32,9 @@ public class ValidadorTest {
     public void TestOverFlowEnElLimite() throws Validador.Underflow, Validador.Overflow {
         try{
             myVal.checkBounds(-10);
+            fail("Overflow not raised");
         }catch(Validador.Overflow e){
-            e.printStackTrace();
+            assertTrue(true);
         }
     }
 
@@ -40,8 +42,9 @@ public class ValidadorTest {
     public void TestUnderFlowEncimaDelLimite() throws Validador.Underflow, Validador.Overflow {
         try{
             myVal.checkBounds(30);
+            fail("Underflow not raised");
         }catch(Validador.Underflow e){
-            e.printStackTrace();
+           assertTrue(true);
         }
     }
 
@@ -49,8 +52,9 @@ public class ValidadorTest {
     public void TestUnderFlowEnElLimite() throws Validador.Underflow, Validador.Overflow {
         try{
             myVal.checkBounds(20);
+            fail("Overflow not raised");
         }catch(Validador.Underflow e){
-            e.printStackTrace();
+            assertTrue(true);
         }
     }
 }
