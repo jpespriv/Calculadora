@@ -2,6 +2,7 @@ package validador;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import validador1.Validador;
 
 /**
  * Created by JuanPablo on 03/03/2015.
