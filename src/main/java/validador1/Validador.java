@@ -5,8 +5,10 @@ package validador1;
  */
 public class Validador {
 
-    private int _min;
-    private int _max;
+    private long _min;
+    private long _max;
+
+    //PRUEBA GIT
 
     public Validador(int _min, int _max){
         this._min = _min;
